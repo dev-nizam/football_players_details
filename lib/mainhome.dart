@@ -23,8 +23,8 @@ class _MainHomeState extends State<MainHome> {
   Widget build(BuildContext context) {
     final playerProvider = Provider.of<PlayerProvider>(context);
     return Scaffold(
-        appBar: AppBar(
-          title: Text("PlayersList"),
+              appBar: AppBar(
+              title: Text("PlayersList"),
         ),
         body: playerProvider.loading
             ? CircularProgressIndicator()

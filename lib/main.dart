@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rapidfootball/bloc/player_bloc.dart';
+import 'package:rapidfootball/bloc_ui.dart';
 import 'package:rapidfootball/home.dart';
 import 'package:provider/provider.dart';
 import 'package:rapidfootball/mainhome.dart';
 import 'package:rapidfootball/provider/playerprovider.dart';
 
 void main() {
-  runApp(MultiProvider(
+  runApp(MultiBlocProvider(
       providers: [
-        ChangeNotifierProvider<PlayerProvider>(create: (ctx)=>PlayerProvider())
+
+        BlocProvider(
+          create: (BuildContext context) => PlayerBloc(),
+        ),
       ],
       child: MyApp()));
 }
@@ -32,7 +38,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home:  MainHome(),
+      home:  BlocUi(),
     );
   }
 }
